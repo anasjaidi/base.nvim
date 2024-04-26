@@ -1,0 +1,142 @@
+-------------------------------alpha---------------------
+-- local C = {}
+
+-- C.header = {
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--     [[                                                                     ]],
+--     [[       ████ ██████           █████      ██                     ]],
+--     [[      ███████████             █████                             ]],
+--     [[      █████████ ███████████████████ ███   ███████████   ]],
+--     [[     █████████  ███    █████████████ █████ ██████████████   ]],
+--     [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+--     [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+--     [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+--     [[                                                                       ]],
+-- }
+
+-- C.buttons = function(dashboard)
+--     return {
+--         dashboard.button("N", "New file", ":ene <BAR> startinsert <CR>"),
+--         dashboard.button("F", "Find File", ":Telescope find_files<CR>"),
+--         dashboard.button("P", "Open Project", ":Telescope project<CR>"),
+--         dashboard.button("R", "Recent Files", ":Telescope frecency<CR>"),
+--         dashboard.button("B", "Find Buffers", ":Telescope buffers<CR>"),
+--         dashboard.button("O", "Find History", ":Telescope oldfiles<CR>"),
+--         dashboard.button("S", "Find String", ":Telescope live_grep<CR>"),
+--         dashboard.button("M", "Find Maps", ":Telescope keymaps<CR>"),
+--         dashboard.button("C", "Find Command", ":Telescope commands<CR>"),
+--         dashboard.button("Q", "Quit", ":qa<CR>")
+--     }
+-- end
+
+-- C.config = function(dashboard)
+--     return {
+--         layout = {
+--             { type = "padding", val = 2 },
+--             dashboard.section.header,
+--             dashboard.section.buttons,
+--         },
+--         opts = {
+--             margin = 5,
+--             noautocmd = false,
+--         },
+--     }
+-- end
+
+-- return C
+-- return {
+-- 	"goolord/alpha-nvim",
+-- 	dependencies = {
+-- 		"nvim-tree/nvim-web-devicons",
+-- 	},
+
+-- 	config = function()
+-- 		local alpha = require("alpha")
+-- 		local dashboard = require("alpha.themes.dashboard")
+-- 		local core_config = require("configs.alpha")
+
+-- 		dashboard.section.header.val = core_config.header
+
+-- 		dashboard.section.buttons.val = core_config.buttons(dashboard)
+
+-- 		dashboard.config = core_config.config(dashboard)
+
+-- 		alpha.setup(dashboard.opts)
+-- 	end,
+-- }
+------------------------- Catptccin --------------------------
+-- return {
+-- 	"catppuccin/nvim",
+-- 	name = "catppuccin",
+-- 	priority = 1000,
+-- 	config = function()
+-- 		vim.cmd.colorscheme "catppuccin"
+-- 	end
+-- }
+----------------------- --neotree ---------------------------------
+-- return {
+-- 	"nvim-tree/nvim-tree.lua",
+-- 	dependencies = {
+-- 		"nvim-tree/nvim-web-devicons",
+-- 	},
+-- 	config = function()
+-- 		vim.keymap.set("n", "<leader>tt", ":NvimTreeToggle<CR>", {})
+-- 		vim.keymap.set("n", "<leader>to", ":NvimTreeOpen<CR>", {})
+-- 		vim.keymap.set("n", "<leader>tc", ":NvimTreeClose<CR>", {})
+-- 		vim.keymap.set("n", "<leader>tr", function()
+-- 			require 'nvim-tree.api'.tree.change_root_to_node()
+-- 		end, { silent = true })
+-- 		return require("nvim-tree").setup({
+-- 			open_on_setup = true,
+-- 		})
+-- 	end
+-- }
+
+--------------------------------- lsp -----------------------------------
+-- ensure_installed = { "lua_ls", "tsserver", "rust_analyzer", "tailwindcss", "cssls", "html", "json", "yamlls", "dockerls" }
+-- config = function()
+--     local lspconfig = require("lspconfig")
+--     lspconfig.htmlls.setup({})
+--     lspconfig.cssls.setup({})
+--     lspconfig.jsonls.setup({})
+--     lspconfig.yamlls.setup({})
+--     lspconfig.dockerls.setup({})
+--     lspconfig.lua_ls.setup({})
+--     lspconfig.tsserver.setup({
+--         filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+--         cmd = { "typescript-language-server", "--stdio" },
+--         root_dir = function() return vim.loop.cwd() end
+--     })
+--     lspconfig.rust_analyzer.setup({})
+--     lspconfig.tailwindcss.setup({
+--         root_dir = require("lspconfig.util").root_pattern("tailwind.config.js", "tailwind.config.cjs",
+--             "tailwind.config.ts", "tailwind.config.tsx", "tailwind.config.json", "tailwind.config.cjson",
+--             "tailwind.config.yaml", "tailwind.config.yml")
+
+--     })
+--     vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, {})
+--     vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, {})
+--     vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, {})
+--     vim.keymap.set("n", "<leader>lca", vim.lsp.buf.code_action, {})
+-- end
+-- lspconfig.angularls.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     root_dir = util.root_pattern("angular.json", "tsconfig.json"),
+-- }
+-- lspconfig.tailwindcss.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     root_dir = util.root_pattern("tailwind.config.js", "tailwind.config.cjs", "tailwind.config.ts", "tailwind.config.tsx", "tailwind.config.json", "tailwind.config.cjson", "tailwind.config.yaml", "tailwind.config.yml"),
+
+-- }
+------------------------------
+-- vim.diagnostic.config({
+-- 	update_in_insert = true, -- Enable updating diagnostics in insert mode
+-- })
+-- vim.wo.relativenumber = true
